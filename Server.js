@@ -18,8 +18,10 @@ const salt = bcrypt.genSaltSync(10);
 const db = knex({
     client: 'pg',
     connection: {
-      connectionString : 'postgres://uxrwsprfyrryjc:357e45b4baf8fb2d45cd8d046cbc8f5c9ae53e89df4794fd5f5b2670dcc96cad@ec2-52-70-15-120.compute-1.amazonaws.com:5432/d8dh35128ndfah',
-      ssl : true
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
     }
   });
 
