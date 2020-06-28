@@ -18,14 +18,12 @@ const salt = bcrypt.genSaltSync(10);
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'postgres',
-      password : 'letmein',
-      database : 'smart-brains'
+      host : process.env.DATABASE_URL,
+      ssl : true
     }
   });
 
-app.get('/' , (req,res) => {res.send('It is working!')})
+app.get('/' , (req,res) => {res.send('It is working!')});
 
 app.post('/signin', handleSignIn(db, bcrypt));
 
