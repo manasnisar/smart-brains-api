@@ -11,7 +11,7 @@ const handleImage = (db) => (req, res) => {
     .catch(err => res.status(400).json('Error getting entries'));
 }
 const app = new Clarifai.App({
-    apiKey: "e9b99cc5ebea4291aa37de5dafb0e22d"
+    apiKey: process.env.API_KEY
   });
 
 export const handleApiCall = (req , res) => {
