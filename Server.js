@@ -25,6 +25,8 @@ const db = knex({
     }
   });
 
+app.get('/' , (req,res) => {res.send('It is working!')})
+
 app.post('/signin', handleSignIn(db, bcrypt));
 
 app.post('/register' , handleRegister(db, bcrypt , salt));
